@@ -6,7 +6,12 @@ public class EnemyWithGun : Enemy
 
     public EnemyGun enemyGun;
 
-  
+    public float attackPeriod = 1f;
+    public override void Start()
+    {
+        base.Start();
+        attackTimer=attackPeriod;
+    }
     public override void AttackState()
     {
         if (playerDetected && playerTransform!=null)
@@ -16,7 +21,7 @@ public class EnemyWithGun : Enemy
             enemyGun.Aim(playerTransform, facingDirection);
             if (attackTimer <= 0)
             {
-                attackTimer = 3f;
+                attackTimer = attackPeriod;
                 enemyGun.Shoot();
             }
             else

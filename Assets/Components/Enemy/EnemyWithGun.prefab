@@ -226,6 +226,7 @@ MonoBehaviour:
   orgEnemyHeart: {fileID: 5374331048117720633}
   wilLDropWeapon: {fileID: 8809332005277655020, guid: e7066b3d3a795d84abd70d7a60378117, type: 3}
   enemyGun: {fileID: 835499360064766167}
+  attackPeriod: 1
 --- !u!1 &4255723724579376214
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,10 +269,6 @@ PrefabInstance:
     - target: {fileID: 1229659075782362157, guid: 1b2e6880faf5243418104e53aea93478, type: 3}
       propertyPath: m_Name
       value: EnemyGun
-      objectReference: {fileID: 0}
-    - target: {fileID: 6631937156283256981, guid: 1b2e6880faf5243418104e53aea93478, type: 3}
-      propertyPath: m_SortingOrder
-      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8368519322317746278, guid: 1b2e6880faf5243418104e53aea93478, type: 3}
       propertyPath: m_LocalPosition.x
