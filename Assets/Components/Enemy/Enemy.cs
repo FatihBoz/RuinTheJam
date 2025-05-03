@@ -113,6 +113,7 @@ public class Enemy : MonoBehaviour, IDamageReceiver
         {
             playerTransform = player.transform;
         }
+        
     }
     private void PatrolState()
     {
@@ -138,19 +139,24 @@ public class Enemy : MonoBehaviour, IDamageReceiver
 
     protected void LookToPlayer()
     {
-        if (playerTransform.position.x - transform.position.x > 0)
+        if (playerTransform!=null)
         {
-            if (facingDirection == -1)
+            
+            if (playerTransform.position.x - transform.position.x > 0)
             {
-                Flip();
+                if (facingDirection == -1)
+                {
+                    Flip();
+                }
             }
-        }
-        else
-        {
-            if (facingDirection == 1)
+            else
             {
-                Flip();
+                if (facingDirection == 1)
+                {
+                    Flip();
+                }
             }
+
         }
     }
     protected void Flip()
