@@ -1089,7 +1089,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -2154,6 +2154,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 20
-  bulletPrefab: {fileID: 382804566217687306, guid: 7e0cfa2a8ed8e4745b3ac339f1ebb3a1, type: 3}
+  bulletPrefab: {fileID: 382804566217687306, guid: 1b17c05a98c847e4ca2080576965cfa9, type: 3}
   bulletSpawnPoint: {fileID: 6132513598530977714}
   aimSpeed: 5

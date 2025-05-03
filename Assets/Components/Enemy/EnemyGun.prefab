@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 20
-  bulletPrefab: {fileID: 382804566217687306, guid: 7e0cfa2a8ed8e4745b3ac339f1ebb3a1, type: 3}
+  bulletPrefab: {fileID: 382804566217687306, guid: 9f7c53acdc482a84fa1f203924329445, type: 3}
   bulletSpawnPoint: {fileID: 3347185559379055659}
   aimSpeed: 5
 --- !u!1 &2888812793993206737
@@ -156,7 +156,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: -2432502294506506857, guid: 071dc930a88afed44901470592ed7062, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -46,7 +46,7 @@ public class Enemy : MonoBehaviour, IDamageReceiver
 
     [SerializeField]
     protected DroppedWeapon wilLDropWeapon;
-    public void Start()
+    public virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         health = maxHealth;
