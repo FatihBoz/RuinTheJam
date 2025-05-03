@@ -12,6 +12,11 @@ public class PlayerCombat : Player, IDamageReceiver
     private int maxHearts = 3;
     private int currentHearts;
 
+    private void Awake()
+    {
+        weapon = GetComponentInChildren<Weapon>();
+    }
+
     private void Start()
     {
         currentHearts = maxHearts;
@@ -24,10 +29,18 @@ public class PlayerCombat : Player, IDamageReceiver
 
     }
 
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+    }
+
     private void Attack()
     {
         if (!attackLoop)
         {
+            print(swordIcon == null);
+            swordIcon.gameObject.SetActive(true);
+            swordIcon.SetCooldown();
             attackLoop = true;
             StartCoroutine(AttackLoop());
             
@@ -65,8 +78,10 @@ public class PlayerCombat : Player, IDamageReceiver
     {
         while (attackLoop)
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(swordIcon.FillTime);
             PlaySwordAnimation();
+            swordIcon.gameObject.SetActive(true);
+            swordIcon.SetCooldown();
         }
     }
 }

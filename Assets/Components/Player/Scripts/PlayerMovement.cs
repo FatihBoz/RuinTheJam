@@ -15,7 +15,6 @@ public class PlayerMovement : Player
     [SerializeField] private GameObject dashEffect;
     [SerializeField] private float dashTime = .5f;
     [SerializeField] private float dashDistance = 10f;
-    private Vector2 previousDashDirection;
     private Vector3 originalScale;
 
     private Rigidbody2D rb;
@@ -72,6 +71,8 @@ public class PlayerMovement : Player
     {
         if (!jumpLoopEnabled)
         {
+            jumpIcon.gameObject.SetActive(true);
+            jumpIcon.SetCooldown();
             jumpLoopEnabled = true;
             StartCoroutine(JumpLoop());
         }
@@ -91,6 +92,8 @@ public class PlayerMovement : Player
     {
         if(!dashLoopEnabled)
         {
+            dashIcon.gameObject.SetActive(true);
+            dashIcon.SetCooldown();
             dashLoopEnabled = true;
             StartCoroutine(DashLoop());
         }
@@ -99,7 +102,6 @@ public class PlayerMovement : Player
         isDashing = true;
         dashEffect.SetActive(true);
 
-        previousDashDirection = dashDirection;
         StartCoroutine(DashCoroutine(dashDirection));
     }
 
@@ -138,8 +140,10 @@ public class PlayerMovement : Player
     {
         while (jumpLoopEnabled)
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(jumpIcon.FillTime);
             Jump();
+            jumpIcon.gameObject.SetActive(true);
+            jumpIcon.SetCooldown();
         }
     }
 
@@ -147,8 +151,10 @@ public class PlayerMovement : Player
     {
         while (dashLoopEnabled)
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(dashIcon.FillTime);
             Dash();
+            dashIcon.gameObject.SetActive(true);
+            dashIcon.SetCooldown();
         }
     }
 

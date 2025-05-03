@@ -8,23 +8,20 @@ public class Weapon : MonoBehaviour
     [SerializeField] private GameObject hitEffect;
     [SerializeField] private Transform attackPos;
 
-    [Header("Screen Shake")]
-    [SerializeField] private float shakeMagnitude = 0.05f;
-    [SerializeField] private float shakeDuration = 0.1f;
-
     private Collider2D enemyCollider;
     private bool effectCanBeInstantiated = true;
     private Vector3 originalScale;
+    private float currentDamage;
     private float currentAttackRange = 0f;
 
     public bool isAttacking = false;
     public bool canAttacksCombined = false;
     public bool biggerAttackIsReady = false;
-    private bool canAttack;
 
 
     private void Start()
     {
+        currentDamage = damage;
         originalScale = transform.localScale;
         currentAttackRange = attackRange;
     }
@@ -36,8 +33,9 @@ public class Weapon : MonoBehaviour
 
     public void MakeWeaponBigger()
     {
-        currentAttackRange *= 2f;
-        transform.localScale *= 2;
+        currentAttackRange *= 3f;
+        transform.localScale *= 3f;
+        currentDamage *= 3f;
         biggerAttackIsReady = true;
     }
 
@@ -51,6 +49,7 @@ public class Weapon : MonoBehaviour
     {
         currentAttackRange = attackRange;
         transform.localScale = originalScale;
+        currentDamage = damage;
         biggerAttackIsReady = false;
     }
 
@@ -80,8 +79,8 @@ public class Weapon : MonoBehaviour
             {
                 effectCanBeInstantiated = true;
                 enemyCollider = collider;   
-                ScreenShake.Instance.Shake(0.05f, 0.1f);
-                damageReceiver.ReceiveDamage(damage);
+                CinemachineShake.Instance.ShakeCamera(5f, 0.1f);
+                damageReceiver.ReceiveDamage(currentDamage);
  
             }
         }
