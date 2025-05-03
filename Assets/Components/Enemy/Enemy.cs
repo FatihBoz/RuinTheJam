@@ -9,6 +9,10 @@ public class Enemy : MonoBehaviour, IDamageReceiver
         Chase,
         Attack
     }
+
+    protected float health = 100f;
+    public float maxHealth = 100f;
+
     protected Rigidbody2D rb;
 
     protected bool isLedgeDetected = false;
@@ -20,7 +24,6 @@ public class Enemy : MonoBehaviour, IDamageReceiver
 
     public Transform wallDetectTransform;
     public float wallDetectionDistance = 1f;
-
 
     protected int facingDirection = 1;
     public float speed = 2f;
@@ -37,10 +40,17 @@ public class Enemy : MonoBehaviour, IDamageReceiver
 
     [SerializeField]
     protected LayerMask flipLayers;
-   
+
+    [SerializeField]
+    protected EnemyHeart orgEnemyHeart;
     public void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        health = 100f;
+        health = maxHealth;
+
+        orgEnemyHeart.SetTarget(transform);
+
     }
 
     private void Update()
@@ -172,6 +182,11 @@ public class Enemy : MonoBehaviour, IDamageReceiver
 
     public void ReceiveDamage(float damageAmount)
     {
-        
+        health-=damageAmount;
+        orgEnemyHeart.SetHealthUI(health, maxHealth);
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -264,6 +264,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ENEMY WITH SWORD
       objectReference: {fileID: 0}
+    - target: {fileID: 5904135604116724971, guid: a7a602806036a7342a2bc6c04caf4127, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -632,6 +636,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 503431315476372714, guid: c80939a8d1c12fb469fdd78aac9b5014, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 3379325534474282256, guid: c80939a8d1c12fb469fdd78aac9b5014, type: 3}
       propertyPath: m_Name
       value: ENEMY
