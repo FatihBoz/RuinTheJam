@@ -13,6 +13,11 @@ public class PlayerCombat : Player, IDamageReceiver
     private int maxHearts = 3;
     private int currentHearts;
 
+    [SerializeField]
+    private Weapon swordWeapon;
+    [SerializeField]
+    private Weapon spearWeapon;
+
     private WeaponType currentWeaponType;
 
     [SerializeField]
@@ -20,18 +25,33 @@ public class PlayerCombat : Player, IDamageReceiver
 
     [SerializeField]
     private Vector2 mousePosition;
+    
+    
     public void SwitchWeapon(WeaponType weaponType)
     {
+        if (currentWeaponType==WeaponType.GUN)
+        {
+            playerGun.gameObject.SetActive(false);
+        }
+        else
+        {
+            weapon.gameObject.SetActive(false);
+        }
 
         currentWeaponType = weaponType;
+        
         switch (weaponType)
         {
             case WeaponType.GUN:
                 playerGun.gameObject.SetActive(true);
                 break;
             case WeaponType.SWORD:
+                weapon = swordWeapon;
+                weapon.gameObject.SetActive(true);
                 break;
             case WeaponType.SPEAR:
+                weapon = spearWeapon;
+                weapon.gameObject.SetActive(true);
                 break;
             default:
                 break;
@@ -76,15 +96,27 @@ public class PlayerCombat : Player, IDamageReceiver
         {
             playerGun.Aim(mousePosition);
         }
-
-        
     }
-
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (Input.GetKeyDown(KeyCode.E) && collision.CompareTag("DroppedWeapon"))
+        {
+            DroppedWeapon droppedWeapon = collision.GetComponent<DroppedWeapon>();
+            if (droppedWeapon != null)
+            {
+                droppedWeapon.Take();
+                SwitchWeapon(droppedWeapon.weaponType);
+                Destroy(droppedWeapon.gameObject);
+            }
+        }
+    }
+    
     private void Attack()
     {
         switch (currentWeaponType)
         {
             case WeaponType.GUN:
+
                 playerGun.Shoot();
                 break;
             case WeaponType.SWORD:
@@ -140,7 +172,7 @@ public class PlayerCombat : Player, IDamageReceiver
         while (attackLoop)
         {
             yield return new WaitForSeconds(swordIcon.FillTime);
-            PlaySwordAnimation();
+            Attack();
             swordIcon.gameObject.SetActive(true);
             swordIcon.SetCooldown();
         }
