@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour
     public void Go(Vector2 direction, float speed)
     {
         rb.linearVelocity = direction * speed;
+        Destroy(gameObject, 2f);
     }
     // Update is called once per frame
     void Update()
