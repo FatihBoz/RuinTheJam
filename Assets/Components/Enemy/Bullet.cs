@@ -12,9 +12,20 @@ public class Bullet : MonoBehaviour
         rb.linearVelocity = direction * speed;
         Destroy(gameObject, 2f);
     }
-    // Update is called once per frame
-    void Update()
+
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        print(transform.name + " hit " + collision.name);
+        if (collision.TryGetComponent<IDamageReceiver>(out IDamageReceiver damageReceiver))
+        {
+            print(collision.name);
+            damageReceiver.ReceiveDamage(1);
+            
+        }
+
+        Destroy(gameObject);
     }
+
 }

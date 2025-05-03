@@ -46,7 +46,6 @@ public class Enemy : MonoBehaviour, IDamageReceiver
     public void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        health = 100f;
         health = maxHealth;
 
         orgEnemyHeart.SetTarget(transform);
@@ -182,7 +181,8 @@ public class Enemy : MonoBehaviour, IDamageReceiver
 
     public void ReceiveDamage(float damageAmount)
     {
-        health-=damageAmount;
+        health -=damageAmount;
+        print("Enemy health: " + health);
         orgEnemyHeart.SetHealthUI(health, maxHealth);
         if (health <= 0)
         {

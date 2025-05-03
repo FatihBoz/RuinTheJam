@@ -6,11 +6,7 @@ public class EnemyWithGun : Enemy
 
     public EnemyGun enemyGun;
 
-    public new void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-
-    }
+  
     public override void AttackState()
     {
         if (playerDetected)

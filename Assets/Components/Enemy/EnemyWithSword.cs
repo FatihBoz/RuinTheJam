@@ -6,10 +6,7 @@ public class EnemyWithSword : Enemy
 
     public float attackRangeDistance;
 
-    new void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
+  
 
     // Update is called once per frame
     public void Update()

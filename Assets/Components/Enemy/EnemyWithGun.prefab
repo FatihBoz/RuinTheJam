@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 360023080252569364}
   - component: {fileID: 503431315476372714}
   - component: {fileID: 2430479800274627454}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemyWithGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50bee192848a0e343aed36b3b9be390a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 3
   ledgeTransform: {fileID: 2799165618143427914}
   ledgeDetectionDistance: 0.6
   wallDetectTransform: {fileID: 8164047904073424847}

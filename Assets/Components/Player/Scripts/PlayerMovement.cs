@@ -15,10 +15,15 @@ public class PlayerMovement : Player
     [SerializeField] private GameObject dashEffect;
     [SerializeField] private float dashTime = .5f;
     [SerializeField] private float dashDistance = 10f;
+    private Vector2 previousDashDirection;
     private Vector3 originalScale;
 
     private Rigidbody2D rb;
     private bool isDashing = false;
+
+    [Header("Loop")]
+    private bool jumpLoopEnabled = false;
+    private bool dashLoopEnabled = false;
 
     private void Awake()
     {
@@ -30,8 +35,21 @@ public class PlayerMovement : Player
     protected override void OnEnable()
     {
         base.OnEnable();
-        inputActions.Player.Jump.performed += ctx => Jump();
-        inputActions.Player.Dash.performed += ctx => Dash();
+        inputActions.Player.Jump.performed += ctx =>
+        {
+            if (IsGrounded())
+            {
+                Jump();
+            }
+        };
+
+        inputActions.Player.Dash.performed += ctx =>
+        {
+            if (!isDashing)
+            {
+                Dash();
+            }
+        };
     }
     protected override void OnDisable()
     {
@@ -52,11 +70,13 @@ public class PlayerMovement : Player
 
     private void Jump()
     {
-        if (IsGrounded())
+        if (!jumpLoopEnabled)
         {
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            jumpLoopEnabled = true;
+            StartCoroutine(JumpLoop());
         }
 
+        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
 
 
@@ -69,24 +89,29 @@ public class PlayerMovement : Player
 
     private void Dash()
     {
-        if (!isDashing)
+        if(!dashLoopEnabled)
         {
-            Vector2 dashDirection = new Vector2(transform.localScale.x, 0).normalized;
-            isDashing = true;
-            dashEffect.SetActive(true);
-            StartCoroutine(DashCoroutine(dashDirection));
+            dashLoopEnabled = true;
+            StartCoroutine(DashLoop());
         }
+
+        Vector2 dashDirection = new Vector2(transform.localScale.x, 0).normalized;
+        isDashing = true;
+        dashEffect.SetActive(true);
+
+        previousDashDirection = dashDirection;
+        StartCoroutine(DashCoroutine(dashDirection));
     }
 
     private IEnumerator DashCoroutine(Vector2 direction)
     {
-        float gravityScale = rb.gravityScale;
-        rb.gravityScale = 0;
+        //float gravityScale = rb.gravityScale;
+        //rb.gravityScale = 0;
         rb.linearVelocity = direction * dashDistance / dashTime;
 
         yield return new WaitForSeconds(dashTime);
 
-        rb.gravityScale = gravityScale;
+        //rb.gravityScale = gravityScale;
         rb.linearVelocity = Vector2.zero;
         isDashing = false;
         dashEffect.SetActive(false);
@@ -107,5 +132,26 @@ public class PlayerMovement : Player
     }
 
 
+    #region Loop
+
+    private IEnumerator JumpLoop()
+    {
+        while (jumpLoopEnabled)
+        {
+            yield return new WaitForSeconds(2f);
+            Jump();
+        }
+    }
+
+    private IEnumerator DashLoop()
+    {
+        while (dashLoopEnabled)
+        {
+            yield return new WaitForSeconds(2f);
+            Dash();
+        }
+    }
+
+    #endregion
 
 }

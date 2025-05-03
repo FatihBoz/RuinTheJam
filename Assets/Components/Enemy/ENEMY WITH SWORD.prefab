@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79a451c7b3e73394199bb478f1b4f27b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 3
   ledgeTransform: {fileID: 6237009003682004012}
   ledgeDetectionDistance: 0.6
   wallDetectTransform: {fileID: 1265820631398225578}

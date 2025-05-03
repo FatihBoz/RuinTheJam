@@ -1,6 +1,7 @@
+using System.Collections;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public abstract class Player : MonoBehaviour
 {
     protected InputSystem_Actions inputActions;
 
