@@ -1,38 +1,48 @@
+using System.Collections;
 using UnityEngine;
-using Unity.Cinemachine;
 
 public class ScreenShake : MonoBehaviour
 {
     public static ScreenShake Instance;
 
-    private CinemachineCamera virtualCamera;
-    private CinemachineBasicMultiChannelPerlin noise;
-
-    private float shakeTimer;
-    private float shakeTimerTotal;
-    private float startingIntensity;
+    private Vector3 originalPosition;
+    private Coroutine shakeCoroutine;
 
     private void Awake()
     {
         Instance = this;
-        virtualCamera = GetComponent<CinemachineCamera>();
-        noise = virtualCamera.GetComponent<CinemachineBasicMultiChannelPerlin>();
+
+        originalPosition = transform.position;
     }
 
-    public void Shake(float intensity = 1f, float time = 0.3f)
-    {
-        noise.AmplitudeGain = intensity;
-        startingIntensity = intensity;
-        shakeTimer = time;
-        shakeTimerTotal = time;
-    }
 
-    private void Update()
+
+    public void Shake(float magnitude = .2f, float duration = .2f)
     {
-        if (shakeTimer > 0)
+        if (shakeCoroutine != null)
         {
-            shakeTimer -= Time.deltaTime;
-            noise.AmplitudeGain = Mathf.Lerp(startingIntensity, 0f, 1 - (shakeTimer / shakeTimerTotal));
+            StopCoroutine(shakeCoroutine);
         }
+        shakeCoroutine = StartCoroutine(ShakeCoroutine(magnitude,duration));
     }
+
+    private IEnumerator ShakeCoroutine(float magnitude, float duration)
+    {
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            float offsetX = Random.Range(-1f, 1f) * magnitude;
+            float offsetY = Random.Range(-1f, 1f) * magnitude;
+
+            transform.position = transform.position + new Vector3(offsetX, offsetY, 0);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = originalPosition;
+    }
+
 }
+

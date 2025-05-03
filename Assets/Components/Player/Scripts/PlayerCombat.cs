@@ -1,14 +1,9 @@
 using UnityEngine;
 
-public class PlayerCombat : Player
+public class PlayerCombat : Player, IDamageReceiver
 {
-    private Animator animator;
-    private bool canDamage = false;
-
-    private void Awake()
-    {
-        animator = GetComponent<Animator>();
-    }
+    [SerializeField] private Animator animator;
+    [SerializeField] private Weapon weapon;
 
     protected override void OnEnable()
     {
@@ -20,15 +15,13 @@ public class PlayerCombat : Player
     private void Attack()
     {
         animator.SetTrigger(AnimationKey.PlayerSwordAttack);
+        
     }
 
-    public void OnAttackStarted()
-    {
-        canDamage = true;
-    }
 
-    public void OnAttackFinished()
+
+    public void ReceiveDamage(float damageAmount)
     {
-        canDamage = false;
+        
     }
 }

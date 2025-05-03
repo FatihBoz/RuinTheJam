@@ -80,11 +80,13 @@ public class PlayerMovement : Player
 
     private IEnumerator DashCoroutine(Vector2 direction)
     {
-        // Set the velocity for the dash
+        float gravityScale = rb.gravityScale;
+        rb.gravityScale = 0;
         rb.linearVelocity = direction * dashDistance / dashTime;
 
         yield return new WaitForSeconds(dashTime);
 
+        rb.gravityScale = gravityScale;
         rb.linearVelocity = Vector2.zero;
         isDashing = false;
         dashEffect.SetActive(false);

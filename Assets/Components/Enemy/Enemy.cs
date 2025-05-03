@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamageReceiver
 {
     public enum EnemyState
     {
@@ -190,5 +190,10 @@ public class Enemy : MonoBehaviour
         }
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, playerDetectionDistance);
+    }
+
+    public void ReceiveDamage(float damageAmount)
+    {
+        
     }
 }
