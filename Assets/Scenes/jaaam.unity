@@ -212,6 +212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   weapon: {fileID: 0}
+  heartsUi: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,6 +759,10 @@ PrefabInstance:
     - target: {fileID: 3379325534474282256, guid: c80939a8d1c12fb469fdd78aac9b5014, type: 3}
       propertyPath: m_Name
       value: EnemyWithGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 3379325534474282256, guid: c80939a8d1c12fb469fdd78aac9b5014, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8848788981528444777, guid: c80939a8d1c12fb469fdd78aac9b5014, type: 3}
       propertyPath: m_LocalPosition.x

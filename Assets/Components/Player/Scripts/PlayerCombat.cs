@@ -12,6 +12,8 @@ public class PlayerCombat : Player, IDamageReceiver
     private int maxHearts = 3;
     private int currentHearts;
 
+   
+
     private void Start()
     {
         currentHearts = maxHearts;

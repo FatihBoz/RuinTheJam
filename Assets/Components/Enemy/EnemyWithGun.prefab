@@ -224,6 +224,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   orgEnemyHeart: {fileID: 5374331048117720633}
+  wilLDropWeapon: {fileID: 8809332005277655020, guid: e7066b3d3a795d84abd70d7a60378117, type: 3}
   enemyGun: {fileID: 835499360064766167}
 --- !u!1 &4255723724579376214
 GameObject:

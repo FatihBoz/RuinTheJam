@@ -6,8 +6,6 @@ public class EnemyWithSword : Enemy
 
     public float attackRangeDistance;
 
-  
-
     // Update is called once per frame
     public void Update()
     {
@@ -109,4 +107,5 @@ public class EnemyWithSword : Enemy
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, attackRangeDistance);
     }
+    
 }

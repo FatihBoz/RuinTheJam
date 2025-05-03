@@ -43,6 +43,9 @@ public class Enemy : MonoBehaviour, IDamageReceiver
 
     [SerializeField]
     protected EnemyHeart orgEnemyHeart;
+
+    [SerializeField]
+    protected DroppedWeapon wilLDropWeapon;
     public void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -169,6 +172,10 @@ public class Enemy : MonoBehaviour, IDamageReceiver
         isLedgeDetected = !Physics2D.Raycast(ledgeTransform.position, Vector2.down, ledgeDetectionDistance, flipLayers);
         isWallDetected = Physics2D.Raycast(wallDetectTransform.position, transform.right, wallDetectionDistance, flipLayers);
     }
+    public virtual void OnDrop()
+    {
+        Instantiate(wilLDropWeapon, transform.position, Quaternion.identity);
+    }
     public virtual void OnDrawGizmos()
     {
 
@@ -192,6 +199,7 @@ public class Enemy : MonoBehaviour, IDamageReceiver
         orgEnemyHeart.SetHealthUI(health, maxHealth);
         if (health <= 0)
         {
+            OnDrop();
             Destroy(orgEnemyHeart.gameObject);
             Destroy(gameObject);
         }
