@@ -193,6 +193,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   orgEnemyHeart: {fileID: 3479686720947196412}
+  wilLDropWeapon: {fileID: -7713592615299134588, guid: 95ffbc86959e65a438d2ee91f0004658, type: 3}
   swordAnimator: {fileID: 3285315454575433384}
   attackRangeDistance: 2.05
 --- !u!1 &6701066933728529903

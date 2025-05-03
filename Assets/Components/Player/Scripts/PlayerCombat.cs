@@ -12,10 +12,12 @@ public class PlayerCombat : Player, IDamageReceiver
     private int maxHearts = 3;
     private int currentHearts;
 
+
     private void Awake()
     {
         weapon = GetComponentInChildren<Weapon>();
     }
+
 
     private void Start()
     {
