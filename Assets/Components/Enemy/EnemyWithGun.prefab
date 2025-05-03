@@ -218,6 +218,9 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
+  flipLayers:
+    serializedVersion: 2
+    m_Bits: 64
   enemyGun: {fileID: 835499360064766167}
 --- !u!1 &4255723724579376214
 GameObject:

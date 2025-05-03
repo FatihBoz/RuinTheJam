@@ -35,8 +35,8 @@ public class Enemy : MonoBehaviour, IDamageReceiver
 
     protected float attackTimer = 3f;
 
-
-
+    [SerializeField]
+    protected LayerMask flipLayers;
    
     public void Start()
     {
@@ -151,8 +151,8 @@ public class Enemy : MonoBehaviour, IDamageReceiver
     }
     protected virtual void PhysicChecks()
     {
-        isLedgeDetected = !Physics2D.Raycast(ledgeTransform.position, Vector2.down, ledgeDetectionDistance, LayerMask.GetMask("Ground"));
-        isWallDetected = Physics2D.Raycast(wallDetectTransform.position, transform.right, wallDetectionDistance, LayerMask.GetMask("Ground"));
+        isLedgeDetected = !Physics2D.Raycast(ledgeTransform.position, Vector2.down, ledgeDetectionDistance, flipLayers);
+        isWallDetected = Physics2D.Raycast(wallDetectTransform.position, transform.right, wallDetectionDistance, flipLayers);
     }
     public virtual void OnDrawGizmos()
     {
