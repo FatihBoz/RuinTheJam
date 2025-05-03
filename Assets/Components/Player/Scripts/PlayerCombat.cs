@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -55,6 +54,9 @@ public class PlayerCombat : Player, IDamageReceiver
         base.OnEnable();
         inputActions.Player.Attack.performed += ctx => Attack();
         inputActions.Player.MousePosition.performed += ctx => GetMousePosition(ctx);
+        inputActions.Player.LevelReset.performed += ctx => OnPlayerDied?.Invoke();
+        OnPlayerDied += OnPlayerDied_Combat;
+
     }
     private void GetMousePosition(InputAction.CallbackContext ctx)
     {
@@ -65,6 +67,8 @@ public class PlayerCombat : Player, IDamageReceiver
         base.OnDisable();
         inputActions.Player.Attack.performed -= ctx => Attack();
         inputActions.Player.MousePosition.performed -= ctx => GetMousePosition(ctx);
+        inputActions.Player.LevelReset.performed -= ctx => OnPlayerDied?.Invoke();
+        OnPlayerDied -= OnPlayerDied_Combat;
     }
     private void Update()
     {
@@ -72,6 +76,8 @@ public class PlayerCombat : Player, IDamageReceiver
         {
             playerGun.Aim(mousePosition);
         }
+
+        
     }
 
     private void Attack()
@@ -84,12 +90,10 @@ public class PlayerCombat : Player, IDamageReceiver
             case WeaponType.SWORD:
                 if (!attackLoop)
                 {
-                    print(swordIcon == null);
                     swordIcon.gameObject.SetActive(true);
                     swordIcon.SetCooldown();
                     attackLoop = true;
                     StartCoroutine(AttackLoop());
-
                 }
                 PlaySwordAnimation();
                 break;
@@ -122,8 +126,12 @@ public class PlayerCombat : Player, IDamageReceiver
         if (currentHearts <= 0)
         {
             OnPlayerDied?.Invoke();
-            Destroy(gameObject);
         }
+    }
+
+    private void OnPlayerDied_Combat()
+    {
+        Destroy(gameObject);
     }
 
 

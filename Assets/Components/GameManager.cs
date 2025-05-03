@@ -6,14 +6,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform spawnPoint;
     
 
-    private void OnEnable()
-    {
-        PlayerCombat.OnPlayerDied += OnPlayerDied;
-    }
+
 
     private void OnPlayerDied()
     {
         Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity);
+    }
+
+    private void OnEnable()
+    {
+        PlayerCombat.OnPlayerDied += OnPlayerDied;
     }
 
     private void OnDisable()
