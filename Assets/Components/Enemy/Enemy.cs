@@ -186,6 +186,7 @@ public class Enemy : MonoBehaviour, IDamageReceiver
         orgEnemyHeart.SetHealthUI(health, maxHealth);
         if (health <= 0)
         {
+            Destroy(orgEnemyHeart.gameObject);
             Destroy(gameObject);
         }
     }
