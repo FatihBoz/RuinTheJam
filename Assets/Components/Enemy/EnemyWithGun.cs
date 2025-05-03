@@ -9,8 +9,9 @@ public class EnemyWithGun : Enemy
   
     public override void AttackState()
     {
-        if (playerDetected)
+        if (playerDetected && playerTransform!=null)
         {
+            
             LookToPlayer();
             enemyGun.Aim(playerTransform, facingDirection);
             if (attackTimer <= 0)

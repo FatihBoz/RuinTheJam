@@ -89,7 +89,7 @@ public class EnemyWithSword : Enemy
 
     private void ChaseState()
     {
-        if (!playerDetected)
+        if (!playerDetected && playerTransform == null)
         {
             idleTime = Random.Range(1f, 3f);
             currentState = EnemyState.Idle;
