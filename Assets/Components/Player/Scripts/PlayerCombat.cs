@@ -10,6 +10,7 @@ public class PlayerCombat : Player, IDamageReceiver
     [SerializeField] private Animator animator;
     [SerializeField] private Weapon weapon;
     [SerializeField] private Transform heartsUi;
+    [SerializeField] private GameObject bloodExplosion;
     private bool attackLoop = false;
     private int maxHearts = 3;
     private int currentHearts;
@@ -154,7 +155,7 @@ public class PlayerCombat : Player, IDamageReceiver
             weapon.LoopAnimationStart();
             animator.SetTrigger(AnimationKey.PlayerSwordAttack);
         }
-        previousAttackLoop = attackLoop;
+        previousAttackLoop = loopAttack;    
     }
 
     public void ReceiveDamage(float damageAmount)
@@ -163,6 +164,7 @@ public class PlayerCombat : Player, IDamageReceiver
         heartsUi.GetChild(currentHearts).gameObject.SetActive(false);
         if (currentHearts <= 0)
         {
+            Destroy(Instantiate(bloodExplosion, transform.position, Quaternion.identity), 1f);
             OnPlayerDied?.Invoke();
             Destroy(gameObject);
         }
