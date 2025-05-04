@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - DroppedWeapon
+  - DroppedItem
   layers:
   - Default
   - TransparentFX

@@ -4,6 +4,7 @@ public class Bullet : MonoBehaviour
 {
     private Rigidbody2D rb;
     public LayerMask hitLayer;
+    public float damage = .5f;
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -26,11 +27,18 @@ public class Bullet : MonoBehaviour
             if (collision.gameObject.TryGetComponent(out IDamageReceiver damageReceiver))
             {
                 Debug.Log(collision.gameObject.name + "hasar aldi");
-                damageReceiver.ReceiveDamage(1f);
+                damageReceiver.ReceiveDamage(damage);
+                Destroy(gameObject);
+
             }
         }
 
-        Destroy(gameObject);
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            Destroy(gameObject);
+        }
+
+
     }
 
 }
