@@ -17,12 +17,14 @@ public class GameFinisher : MonoBehaviour
         refreshButton.onClick.AddListener(() =>
         {
             Time.timeScale = 1f;
+            SoundManager.Instance.PlayUIClick();
             SceneLoader.Instance.LoadScene(currentScene);
         });
 
         homeButton.onClick.AddListener(() =>
         {
             Time.timeScale = 1f;
+            SoundManager.Instance.PlayUIClick();
             SceneLoader.Instance.LoadScene("MainMenu");
         });
     }

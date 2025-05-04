@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 261584491418432543, guid: d7e000681ad21b24785731f70b00285e, type: 3}
+  m_Sprite: {fileID: -845891261243652967, guid: 055ce5234e33192419d8558965e52e9c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -132,7 +132,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.86, y: 1.28}
+    oldSize: {x: 0.85, y: 1.28}
     newSize: {x: 0.86, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -429,7 +429,7 @@ PrefabInstance:
     - target: {fileID: 1453502403180557609, guid: 6d26999cbf8a72a4ea0efc2515025512, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 6748224229979007400, guid: 122e9fe30cfaa3544a9e5feb45e3d7ca, type: 3}
+      objectReference: {fileID: 6119726517528779825, guid: ee74615fdc2061f469b24f6ffd5e35cb, type: 3}
     - target: {fileID: 4298883488971786002, guid: 6d26999cbf8a72a4ea0efc2515025512, type: 3}
       propertyPath: damageableLayer.m_Bits
       value: 128

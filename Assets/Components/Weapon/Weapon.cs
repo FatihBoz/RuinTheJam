@@ -78,7 +78,8 @@ public class Weapon : MonoBehaviour
             if (collider.TryGetComponent<IDamageReceiver>(out IDamageReceiver damageReceiver))
             {
                 effectCanBeInstantiated = true;
-                enemyCollider = collider;   
+                enemyCollider = collider;
+                SoundManager.Instance.PlayHitClick();
                 CinemachineShake.Instance.ShakeCamera(5f, 0.1f);
                 damageReceiver.ReceiveDamage(currentDamage);
  

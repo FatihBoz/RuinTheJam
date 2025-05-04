@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [SerializeField] private GameObject hitEffectPrefab;
     private Rigidbody2D rb;
     public LayerMask hitLayer;
     public float damage = .5f;
@@ -26,8 +27,13 @@ public class Bullet : MonoBehaviour
         {
             if (collision.gameObject.TryGetComponent(out IDamageReceiver damageReceiver))
             {
-                Debug.Log(collision.gameObject.name + "hasar aldi");
                 damageReceiver.ReceiveDamage(damage);
+                var effect = Instantiate(hitEffectPrefab, collision.ClosestPoint(transform.position), Quaternion.identity);
+                if (collision.transform.rotation.y > 0)
+                {
+                    effect.transform.localScale = new Vector3(-effect.transform.localScale.x, effect.transform.localScale.y, effect.transform.localScale.z);
+                }
+                SoundManager.Instance.PlayHitClick();
                 Destroy(gameObject);
 
             }

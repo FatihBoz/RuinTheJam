@@ -102,9 +102,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f74e3a6c7972ba4c9fdc93fdcbb09f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitEffectPrefab: {fileID: 6350861182820729875, guid: 1992fab6c3d9bc0458b0f94b8ab6f551, type: 3}
   hitLayer:
     serializedVersion: 2
     m_Bits: 128
+  damage: 0.5
 --- !u!50 &-3134536326137110173
 Rigidbody2D:
   serializedVersion: 5
