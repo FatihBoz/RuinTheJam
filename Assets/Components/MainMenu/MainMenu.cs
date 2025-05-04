@@ -5,6 +5,8 @@ using Unity.Cinemachine;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] private GameObject buttonPanel;
+
     [Header("Bridge")]
     [SerializeField] private Transform bridge;
     [SerializeField] private Button buildBridgeButton;
@@ -17,11 +19,19 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private float targetedWaterLevel = 0f;
     [SerializeField] private float waterLevelTime = 2f;
 
+    [Header("Tutorial")]
+    [SerializeField] private Button tutorialButton;
+    [SerializeField] private string tutorialScene = "Level0";
+
 
     private void Start()
     {
         buildBridgeButton.onClick.AddListener(OnBuildButtonPressed);
         raiseWaterButton.onClick.AddListener(OnRaiseWaterButtonPressed);
+        tutorialButton.onClick.AddListener(() =>
+        {
+            SceneLoader.Instance.LoadScene(tutorialScene);
+        });
     }
 
     public void OnBuildButtonPressed()
@@ -39,9 +49,7 @@ public class MainMenu : MonoBehaviour
 
     private void MakeButtonInactive()
     {
-        buildBridgeButton.gameObject.SetActive(false);
-        raiseWaterButton.gameObject.SetActive(false);
-        CinemachineCamera c = GetComponent<CinemachineCamera>();
+        buttonPanel.SetActive(false);
     }
 
 }

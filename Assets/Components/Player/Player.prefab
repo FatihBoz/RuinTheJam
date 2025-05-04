@@ -392,9 +392,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7976630982614140345}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 146, y: -48}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 74, y: 66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9022771857923799239
@@ -772,9 +772,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7976630982614140345}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 240, y: -48}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 74, y: 66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9071629953705553503
@@ -847,9 +847,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7976630982614140345}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 52, y: -48}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 74, y: 66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7041551334003403508
@@ -1416,7 +1416,7 @@ MonoBehaviour:
   heartsUi: {fileID: 7976630982614140345}
   bloodExplosion: {fileID: 8804872940776342432, guid: e6daa54a5c287e847af3abb4199d4302, type: 3}
   swordWeapon: {fileID: 1770920063928532183}
-  spearWeapon: {fileID: 0}
+  spearWeapon: {fileID: 6968667494600676309}
   playerGun: {fileID: 911019112308700462}
   mousePosition: {x: 0, y: 0}
 --- !u!1 &7944921042484169106
@@ -1523,7 +1523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   closer: {fileID: 6861783538810636014}
-  initialFillTime: 3
+  initialFillTime: 4
 --- !u!1 &8293476646372934195
 GameObject:
   m_ObjectHideFlags: 0
@@ -1901,9 +1901,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3651907662579850054}
     m_Modifications:
+    - target: {fileID: 982562961460766908, guid: 5fb633f8aa308aa468df7e72cf74ffc2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -8848188485363362922, guid: 8582063b5e0e5ff4fa459463603e9aeb, type: 3}
+    - target: {fileID: 982562961460766908, guid: 5fb633f8aa308aa468df7e72cf74ffc2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092212401965539210, guid: 5fb633f8aa308aa468df7e72cf74ffc2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4938209062249483503, guid: 5fb633f8aa308aa468df7e72cf74ffc2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -8848188485363362922, guid: 8582063b5e0e5ff4fa459463603e9aeb, type: 3}
+    - target: {fileID: 4938209062249483503, guid: 5fb633f8aa308aa468df7e72cf74ffc2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5532530750200998357, guid: 5fb633f8aa308aa468df7e72cf74ffc2, type: 3}
       propertyPath: m_Name
       value: Spear
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532530750200998357, guid: 5fb633f8aa308aa468df7e72cf74ffc2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9143268512751984908, guid: 5fb633f8aa308aa468df7e72cf74ffc2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1950,6 +1974,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fb633f8aa308aa468df7e72cf74ffc2, type: 3}
+--- !u!114 &6968667494600676309 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7690529136747374632, guid: 5fb633f8aa308aa468df7e72cf74ffc2, type: 3}
+  m_PrefabInstance: {fileID: 724958228116569085}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c563d2b380dd28d44b891c7d042938d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8425386003387833073 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9143268512751984908, guid: 5fb633f8aa308aa468df7e72cf74ffc2, type: 3}
@@ -2002,6 +2037,14 @@ PrefabInstance:
     - target: {fileID: 14113277272400386, guid: 6d26999cbf8a72a4ea0efc2515025512, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1453502403180557609, guid: 6d26999cbf8a72a4ea0efc2515025512, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -8848188485363362922, guid: 8582063b5e0e5ff4fa459463603e9aeb, type: 3}
+    - target: {fileID: 1453502403180557609, guid: 6d26999cbf8a72a4ea0efc2515025512, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7550167846596806041, guid: 6d26999cbf8a72a4ea0efc2515025512, type: 3}
       propertyPath: m_Name
@@ -2125,7 +2168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 526d6f60a3494df4ab248e908a733239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 20
+  bulletSpeed: 30
   bulletPrefab: {fileID: 382804566217687306, guid: 1b17c05a98c847e4ca2080576965cfa9, type: 3}
   bulletSpawnPoint: {fileID: 6132513598530977714}
-  aimSpeed: 5
+  aimSpeed: 10
