@@ -1898,7 +1898,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Raise Water
+  m_text: Quit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f82481bb6f2ae3148b108d8c7f6341fe, type: 2}
   m_sharedMaterial: {fileID: 658391191418493024, guid: f82481bb6f2ae3148b108d8c7f6341fe, type: 2}
@@ -4649,7 +4649,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Build Bridge
+  m_text: Play
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f82481bb6f2ae3148b108d8c7f6341fe, type: 2}
   m_sharedMaterial: {fileID: 658391191418493024, guid: f82481bb6f2ae3148b108d8c7f6341fe, type: 2}
@@ -4740,6 +4740,7 @@ GameObject:
   - component: {fileID: 1508468914}
   - component: {fileID: 1508468913}
   - component: {fileID: 1508468917}
+  - component: {fileID: 1508468918}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -4771,7 +4772,7 @@ MonoBehaviour:
       Size: {x: 0.8, y: 0.8}
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
-  TargetOffset: {x: 0, y: 0, z: 0}
+  TargetOffset: {x: 0, y: 1, z: 0}
   Damping: {x: 1, y: 1, z: 1}
   Lookahead:
     Enabled: 0
@@ -4853,6 +4854,26 @@ MonoBehaviour:
   AmplitudeGain: 0
   FrequencyGain: 0
   m_NoiseOffsets: {x: 0, y: 0, z: 0}
+--- !u!114 &1508468918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508468912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f453f694addf4275988fac205bc91968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BoundingShape2D: {fileID: 0}
+  Damping: 0.5
+  SlowingDistance: 5
+  OversizeWindow:
+    Enabled: 0
+    MaxWindowSize: 0
+    Padding: 0
+  m_LegacyMaxWindowSize: -2
 --- !u!1 &1529113065
 GameObject:
   m_ObjectHideFlags: 0

@@ -102,6 +102,7 @@ public class EnemyWithSword : Enemy
             currentState = EnemyState.Idle;
             return;
         }
+        LookToPlayer();
 
         if (Vector2.Distance(playerTransform.position,transform.position)<attackRangeDistance)
         {
@@ -115,7 +116,6 @@ public class EnemyWithSword : Enemy
         }
         else if (!(isLedgeDetected || isWallDetected))
         {
-            LookToPlayer();
             rb.linearVelocity = new Vector2(1.5f * speed * facingDirection, rb.linearVelocity.y);
         }
            

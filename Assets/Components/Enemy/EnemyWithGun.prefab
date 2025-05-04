@@ -220,6 +220,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
+  attackTimer: 3
   flipLayers:
     serializedVersion: 2
     m_Bits: 64
@@ -270,6 +271,10 @@ PrefabInstance:
     - target: {fileID: 1229659075782362157, guid: 1b2e6880faf5243418104e53aea93478, type: 3}
       propertyPath: m_Name
       value: EnemyGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 3042766673198472173, guid: 1b2e6880faf5243418104e53aea93478, type: 3}
+      propertyPath: bulletSpeed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8368519322317746278, guid: 1b2e6880faf5243418104e53aea93478, type: 3}
       propertyPath: m_LocalPosition.x

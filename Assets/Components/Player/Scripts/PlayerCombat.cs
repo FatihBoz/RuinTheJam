@@ -81,6 +81,7 @@ public class PlayerCombat : Player, IDamageReceiver
         inputActions.Player.Attack.performed += ctx => Attack(false);
         inputActions.Player.MousePosition.performed += ctx => GetMousePosition(ctx);
         inputActions.Player.LevelReset.performed += ctx => OnLevelReset?.Invoke();
+        OnPlayerDied += PlayerDied;
 
     }
     private void GetMousePosition(InputAction.CallbackContext ctx)
@@ -93,6 +94,7 @@ public class PlayerCombat : Player, IDamageReceiver
         inputActions.Player.Attack.performed -= ctx => Attack(false);
         inputActions.Player.MousePosition.performed -= ctx => GetMousePosition(ctx);
         inputActions.Player.LevelReset.performed -= ctx => OnLevelReset?.Invoke();
+        OnPlayerDied -= PlayerDied;
     }
     private void Update()
     {
@@ -182,10 +184,14 @@ public class PlayerCombat : Player, IDamageReceiver
         heartsUi.GetChild(currentHearts).gameObject.SetActive(false);
         if (currentHearts <= 0)
         {
-            Destroy(Instantiate(bloodExplosion, transform.position, Quaternion.identity), 1f);
             OnPlayerDied?.Invoke();
-            Destroy(gameObject);
         }
+    }
+
+    void PlayerDied()
+    {
+        Destroy(Instantiate(bloodExplosion, transform.position, Quaternion.identity), 1f);
+        Destroy(gameObject);
     }
 
 

@@ -31,7 +31,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.33, y: 0.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8949060936469335955}
   - {fileID: 6237009003682004012}
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 261584491418432543, guid: d7e000681ad21b24785731f70b00285e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -189,6 +189,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
+  attackTimer: 3
   flipLayers:
     serializedVersion: 2
     m_Bits: 64
@@ -197,6 +198,7 @@ MonoBehaviour:
   bloodExplosion: {fileID: 8804872940776342432, guid: e6daa54a5c287e847af3abb4199d4302, type: 3}
   swordAnimator: {fileID: 6623384833898938185}
   attackRangeDistance: 2.05
+  attackPeriod: 1
 --- !u!1 &6701066933728529903
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,6 +269,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1597441707694143710}
     m_Modifications:
+    - target: {fileID: 982562961460766908, guid: 5fb633f8aa308aa468df7e72cf74ffc2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092212401965539210, guid: 5fb633f8aa308aa468df7e72cf74ffc2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4938209062249483503, guid: 5fb633f8aa308aa468df7e72cf74ffc2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5532530750200998357, guid: 5fb633f8aa308aa468df7e72cf74ffc2, type: 3}
       propertyPath: m_Name
       value: Spear
