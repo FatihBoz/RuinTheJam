@@ -12606,7 +12606,7 @@ GameObject:
   - component: {fileID: 2144410299}
   - component: {fileID: 2144410298}
   m_Layer: 0
-  m_Name: Destroyer
+  m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12646,7 +12646,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -11.484871, y: -5.9158564}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -12656,7 +12656,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 98.62715, y: 6.6697674}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!4 &2144410299
 Transform:
@@ -12667,7 +12667,7 @@ Transform:
   m_GameObject: {fileID: 2144410297}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 170.3, y: -2.7, z: 0.8210883}
+  m_LocalPosition: {x: 97.111855, y: -5.647301, z: 0.8210883}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
