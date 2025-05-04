@@ -95,12 +95,6 @@ public class EnemyWithSword : Enemy
 
     private void ChaseState()
     {
-        if (isLedgeDetected || isWallDetected)
-        {
-            idleTime = Random.Range(1f, 3f);
-            currentState = EnemyState.Idle;
-            return;
-        }
 
         if (!playerDetected && playerTransform == null)
         {
@@ -119,7 +113,7 @@ public class EnemyWithSword : Enemy
                 return;
             }
         }
-        else
+        else if (!(isLedgeDetected || isWallDetected))
         {
             LookToPlayer();
             rb.linearVelocity = new Vector2(1.5f * speed * facingDirection, rb.linearVelocity.y);
