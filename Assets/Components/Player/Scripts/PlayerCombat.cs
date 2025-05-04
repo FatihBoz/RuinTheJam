@@ -28,8 +28,9 @@ public class PlayerCombat : Player, IDamageReceiver
 
     [SerializeField]
     private Vector2 mousePosition;
-    
-    
+
+    private DroppedWeapon triggeredDroppedWeapon;
+
     public void SwitchWeapon(WeaponType weaponType)
     {
         if (currentWeaponType==WeaponType.GUN)
@@ -93,25 +94,40 @@ public class PlayerCombat : Player, IDamageReceiver
     }
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (triggeredDroppedWeapon!=null)
+            {
+                WeaponType weaponType = triggeredDroppedWeapon.weaponType;
+                Destroy(triggeredDroppedWeapon.gameObject);
+                SwitchWeapon(weaponType);
+
+            }
+        }
         if (currentWeaponType == WeaponType.GUN)
         {
             playerGun.Aim(mousePosition);
         }
     }
-    private void OnTriggerStay2D(Collider2D collision)
+  
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (Input.GetKeyDown(KeyCode.E) && collision.CompareTag("DroppedWeapon"))
+        if (collision.CompareTag("DroppedItem"))
         {
-            DroppedWeapon droppedWeapon = collision.GetComponent<DroppedWeapon>();
-            if (droppedWeapon != null)
+            triggeredDroppedWeapon = collision.GetComponent<DroppedWeapon>();
+           
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("DroppedItem"))
+        {
+            if (triggeredDroppedWeapon != null && triggeredDroppedWeapon==collision.GetComponent<DroppedWeapon>())
             {
-                droppedWeapon.Take();
-                SwitchWeapon(droppedWeapon.weaponType);
-                Destroy(droppedWeapon.gameObject);
+                triggeredDroppedWeapon = null;
             }
         }
     }
-    
     private void Attack(bool loopAttack)
     {
         
