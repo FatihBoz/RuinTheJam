@@ -225,6 +225,7 @@ MonoBehaviour:
     m_Bits: 64
   orgEnemyHeart: {fileID: 5374331048117720633}
   wilLDropWeapon: {fileID: 8809332005277655020, guid: e7066b3d3a795d84abd70d7a60378117, type: 3}
+  bloodExplosion: {fileID: 8804872940776342432, guid: e6daa54a5c287e847af3abb4199d4302, type: 3}
   enemyGun: {fileID: 835499360064766167}
   attackPeriod: 1
 --- !u!1 &4255723724579376214

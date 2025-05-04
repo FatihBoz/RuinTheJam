@@ -46,6 +46,9 @@ public class Enemy : MonoBehaviour, IDamageReceiver
 
     [SerializeField]
     protected DroppedWeapon wilLDropWeapon;
+
+
+    [SerializeField] private GameObject bloodExplosion;
     public virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -200,6 +203,7 @@ public class Enemy : MonoBehaviour, IDamageReceiver
         if (health <= 0)
         {
             OnDrop();
+            Destroy(Instantiate(bloodExplosion, transform.position, Quaternion.identity), 1f);
             Destroy(orgEnemyHeart.gameObject);
             Destroy(gameObject);
         }
