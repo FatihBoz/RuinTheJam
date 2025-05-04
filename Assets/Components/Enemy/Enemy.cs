@@ -36,6 +36,7 @@ public class Enemy : MonoBehaviour, IDamageReceiver
     public LayerMask playerLayer;
     protected Transform playerTransform;
 
+    [SerializeField]
     protected float attackTimer = 3f;
 
     [SerializeField]

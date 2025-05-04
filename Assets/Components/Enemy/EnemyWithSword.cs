@@ -6,6 +6,13 @@ public class EnemyWithSword : Enemy
 
     public float attackRangeDistance;
 
+
+    public float attackPeriod = 1f;
+    public override void Start()
+    {
+        base.Start();
+        attackTimer = attackPeriod;
+    }
     // Update is called once per frame
     public void Update()
     {
@@ -17,6 +24,7 @@ public class EnemyWithSword : Enemy
             case EnemyState.Patrol:
                 break;
             case EnemyState.Chase:
+                attackTimer -= Time.deltaTime;
                 break;
             case EnemyState.Attack:
                 break;
@@ -100,13 +108,23 @@ public class EnemyWithSword : Enemy
             currentState = EnemyState.Idle;
             return;
         }
+
         if (Vector2.Distance(playerTransform.position,transform.position)<attackRangeDistance)
         {
-            swordAnimator.SetTrigger(AnimationKey.PlayerSwordAttack);
-            return;
+            if (attackTimer <= 0)
+            {
+                rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+                swordAnimator.SetTrigger(AnimationKey.PlayerSwordAttack);
+                attackTimer = attackPeriod;
+                return;
+            }
         }
-        LookToPlayer();
-        rb.linearVelocity = new Vector2(1.5f*speed * facingDirection, rb.linearVelocity.y);
+        else
+        {
+            LookToPlayer();
+            rb.linearVelocity = new Vector2(1.5f * speed * facingDirection, rb.linearVelocity.y);
+        }
+           
     }
     public override void OnDrawGizmos()
     {

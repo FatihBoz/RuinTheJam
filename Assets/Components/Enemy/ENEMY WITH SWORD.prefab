@@ -189,6 +189,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
+  attackTimer: 3
   flipLayers:
     serializedVersion: 2
     m_Bits: 64
@@ -197,6 +198,7 @@ MonoBehaviour:
   bloodExplosion: {fileID: 8804872940776342432, guid: e6daa54a5c287e847af3abb4199d4302, type: 3}
   swordAnimator: {fileID: 3285315454575433384}
   attackRangeDistance: 2.05
+  attackPeriod: 0.75
 --- !u!1 &6701066933728529903
 GameObject:
   m_ObjectHideFlags: 0
