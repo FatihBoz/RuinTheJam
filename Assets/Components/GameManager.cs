@@ -6,10 +6,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private CinemachineCamera cam;
+    [SerializeField] private string loadlanacakScene = "Level1";
 
     private void OnPlayerDied()
     {
-        SceneLoader.Instance.LoadScene("Level1");
+        SceneLoader.Instance.LoadScene(loadlanacakScene);
     }
 
     private void OnEnable()
