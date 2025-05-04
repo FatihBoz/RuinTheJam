@@ -6,12 +6,14 @@ using UnityEngine.InputSystem;
 public class PlayerCombat : Player, IDamageReceiver
 {
     public static Action OnPlayerDied;
+    public static Action OnLevelReset;
     [SerializeField] private Animator animator;
     [SerializeField] private Weapon weapon;
     [SerializeField] private Transform heartsUi;
     private bool attackLoop = false;
     private int maxHearts = 3;
     private int currentHearts;
+    private bool previousAttackLoop = false;
 
     [SerializeField]
     private Weapon swordWeapon;
@@ -72,10 +74,9 @@ public class PlayerCombat : Player, IDamageReceiver
     protected override void OnEnable()
     {
         base.OnEnable();
-        inputActions.Player.Attack.performed += ctx => Attack();
+        inputActions.Player.Attack.performed += ctx => Attack(false);
         inputActions.Player.MousePosition.performed += ctx => GetMousePosition(ctx);
-        inputActions.Player.LevelReset.performed += ctx => OnPlayerDied?.Invoke();
-        OnPlayerDied += OnPlayerDied_Combat;
+        inputActions.Player.LevelReset.performed += ctx => OnLevelReset?.Invoke();
 
     }
     private void GetMousePosition(InputAction.CallbackContext ctx)
@@ -85,10 +86,9 @@ public class PlayerCombat : Player, IDamageReceiver
     protected override void OnDisable()
     {
         base.OnDisable();
-        inputActions.Player.Attack.performed -= ctx => Attack();
+        inputActions.Player.Attack.performed -= ctx => Attack(false);
         inputActions.Player.MousePosition.performed -= ctx => GetMousePosition(ctx);
-        inputActions.Player.LevelReset.performed -= ctx => OnPlayerDied?.Invoke();
-        OnPlayerDied -= OnPlayerDied_Combat;
+        inputActions.Player.LevelReset.performed -= ctx => OnLevelReset?.Invoke();
     }
     private void Update()
     {
@@ -111,8 +111,9 @@ public class PlayerCombat : Player, IDamageReceiver
         }
     }
     
-    private void Attack()
+    private void Attack(bool loopAttack)
     {
+        
         switch (currentWeaponType)
         {
             case WeaponType.GUN:
@@ -127,28 +128,33 @@ public class PlayerCombat : Player, IDamageReceiver
                     attackLoop = true;
                     StartCoroutine(AttackLoop());
                 }
-                PlaySwordAnimation();
+                PlaySwordAnimation(loopAttack);
                 break;
             case WeaponType.SPEAR:
 
                 break;
             default:
                 break;
-        }   
+        }
+        
     }
 
-    void PlaySwordAnimation()
+    void PlaySwordAnimation(bool loopAttack)
     {
-        if (weapon.canAttacksCombined && !weapon.biggerAttackIsReady)
+        print("Loop Attack : " + loopAttack);
+        print("previous loop attack : " + previousAttackLoop);
+
+        if (weapon.canAttacksCombined && !weapon.biggerAttackIsReady && ((loopAttack && !previousAttackLoop) || (!loopAttack && previousAttackLoop)))
         {
+
             weapon.MakeWeaponBigger();
         }
         else
         {
-            weapon.AnimationStart();
+            weapon.LoopAnimationStart();
             animator.SetTrigger(AnimationKey.PlayerSwordAttack);
         }
-        
+        previousAttackLoop = attackLoop;
     }
 
     public void ReceiveDamage(float damageAmount)
@@ -158,12 +164,8 @@ public class PlayerCombat : Player, IDamageReceiver
         if (currentHearts <= 0)
         {
             OnPlayerDied?.Invoke();
+            Destroy(gameObject);
         }
-    }
-
-    private void OnPlayerDied_Combat()
-    {
-        Destroy(gameObject);
     }
 
 
@@ -172,7 +174,7 @@ public class PlayerCombat : Player, IDamageReceiver
         while (attackLoop)
         {
             yield return new WaitForSeconds(swordIcon.FillTime);
-            Attack();
+            Attack(true);
             swordIcon.gameObject.SetActive(true);
             swordIcon.SetCooldown();
         }

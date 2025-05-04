@@ -10,6 +10,7 @@ public class PlayerMovement : Player
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform groundCheckPoint;
+    [SerializeField] private float rayLength = 0.3f;
 
     [Header("Dash")]
     [SerializeField] private GameObject dashEffect;
@@ -83,7 +84,9 @@ public class PlayerMovement : Player
 
     private bool IsGrounded()
     {
-        RaycastHit2D hit = Physics2D.Raycast(groundCheckPoint.position, Vector2.down, 0.15f,groundLayer);
+        RaycastHit2D hit = Physics2D.Raycast(groundCheckPoint.position, Vector2.down, rayLength,groundLayer);
+        Debug.DrawRay(groundCheckPoint.position, Vector2.down * rayLength, Color.red);
+
 
         return hit.collider != null;
     }

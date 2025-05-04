@@ -26,7 +26,7 @@ public class Weapon : MonoBehaviour
         currentAttackRange = attackRange;
     }
 
-    public void AnimationStart()
+    public void LoopAnimationStart()
     {
         canAttacksCombined = true;
     }

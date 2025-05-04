@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Unity.Cinemachine;
+using System.Collections;
 
 public class CinemachineShake : MonoBehaviour {
 
@@ -10,9 +11,39 @@ public class CinemachineShake : MonoBehaviour {
     private float shakeTimerTotal;
     private float startingIntensity;
 
+    [Header("Initial Movement")]
+    [SerializeField] private Transform playerTransform;
+    [SerializeField] private float smoothTime = 0.3f;
+    [SerializeField] private Transform targetTransform;
+    [SerializeField] private GameObject enemies;
+
     private void Awake() {
         Instance = this;
         cinemachineVirtualCamera = GetComponent<CinemachineCamera>();
+    }
+
+    private void Start()
+    {
+        StartCoroutine(SmoothMoveCamera(targetTransform.position));
+    }
+
+    private IEnumerator SmoothMoveCamera(Vector3 targetPosition)
+    {
+        float elapsedTime = 0f;
+        float duration = smoothTime;
+        Vector3 startingPosition = playerTransform.position;
+
+        while (elapsedTime < duration)
+        {
+            print("while");
+            playerTransform.position = Vector3.Lerp(startingPosition, targetPosition, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        playerTransform.position = targetPosition;
+        playerTransform.gameObject.SetActive(true);
+        enemies.SetActive(true);
     }
 
     public void ShakeCamera(float intensity, float time) {
@@ -38,9 +69,18 @@ public class CinemachineShake : MonoBehaviour {
 
         if(cinemachineVirtualCamera.Follow == null)
         {
-            cinemachineVirtualCamera.Follow = GameObject.FindFirstObjectByType<PlayerCombat>().transform;
+            FindPlayer();
         }
         
+    }
+
+    private void FindPlayer()
+    {
+        var player = GameObject.FindFirstObjectByType<PlayerCombat>();
+        if(player != null)
+        {
+            cinemachineVirtualCamera.Follow = GameObject.FindFirstObjectByType<PlayerCombat>().transform;
+        }
     }
 
 }
