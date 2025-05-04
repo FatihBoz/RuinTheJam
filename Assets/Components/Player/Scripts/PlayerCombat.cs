@@ -51,10 +51,12 @@ public class PlayerCombat : Player, IDamageReceiver
                 break;
             case WeaponType.SWORD:
                 weapon = swordWeapon;
+                animator = swordWeapon.GetComponent<Animator>();
                 weapon.gameObject.SetActive(true);
                 break;
             case WeaponType.SPEAR:
                 weapon = spearWeapon;
+                animator = spearWeapon.GetComponent<Animator>();
                 weapon.gameObject.SetActive(true);
                 break;
             default:
@@ -130,24 +132,24 @@ public class PlayerCombat : Player, IDamageReceiver
     }
     private void Attack(bool loopAttack)
     {
-        
+        if (!attackLoop)
+        {
+            swordIcon.gameObject.SetActive(true);
+            swordIcon.SetCooldown();
+            attackLoop = true;
+            StartCoroutine(AttackLoop());
+        }
         switch (currentWeaponType)
         {
             case WeaponType.GUN:
-
                 playerGun.Shoot();
                 break;
             case WeaponType.SWORD:
-                if (!attackLoop)
-                {
-                    swordIcon.gameObject.SetActive(true);
-                    swordIcon.SetCooldown();
-                    attackLoop = true;
-                    StartCoroutine(AttackLoop());
-                }
+                
                 PlaySwordAnimation(loopAttack);
                 break;
             case WeaponType.SPEAR:
+                PlaySwordAnimation(loopAttack);
 
                 break;
             default:
