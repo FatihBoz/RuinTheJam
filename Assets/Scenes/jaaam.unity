@@ -210,9 +210,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80b10826287a64f4cbf0761fcbd9fdb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  swordIcon: {fileID: 0}
+  jumpIcon: {fileID: 0}
+  dashIcon: {fileID: 0}
   animator: {fileID: 0}
   weapon: {fileID: 0}
   heartsUi: {fileID: 0}
+  swordWeapon: {fileID: 0}
+  spearWeapon: {fileID: 0}
+  playerGun: {fileID: 0}
+  mousePosition: {x: 0, y: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -742,7 +749,7 @@ Transform:
   m_GameObject: {fileID: 2111759551}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.09, y: -4.03, z: 0}
+  m_LocalPosition: {x: 1, y: -5.4, z: 0}
   m_LocalScale: {x: 6.1446757, y: 5.0273, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -766,11 +773,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8848788981528444777, guid: c80939a8d1c12fb469fdd78aac9b5014, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.15069145
+      value: -2.4
       objectReference: {fileID: 0}
     - target: {fileID: 8848788981528444777, guid: c80939a8d1c12fb469fdd78aac9b5014, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.16
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 8848788981528444777, guid: c80939a8d1c12fb469fdd78aac9b5014, type: 3}
       propertyPath: m_LocalPosition.z
@@ -819,11 +826,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1597441707694143710, guid: a7a602806036a7342a2bc6c04caf4127, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.33
+      value: 2.6
       objectReference: {fileID: 0}
     - target: {fileID: 1597441707694143710, guid: a7a602806036a7342a2bc6c04caf4127, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.16
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 1597441707694143710, guid: a7a602806036a7342a2bc6c04caf4127, type: 3}
       propertyPath: m_LocalPosition.z
