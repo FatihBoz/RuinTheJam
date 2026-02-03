@@ -1,3 +1,6 @@
+  
+
+
 using System;
 using System.Collections;
 using UnityEngine;
@@ -162,8 +165,6 @@ public class PlayerCombat : Player, IDamageReceiver
 
     void PlaySwordAnimation(bool loopAttack)
     {
-        print("Loop Attack : " + loopAttack);
-        print("previous loop attack : " + previousAttackLoop);
 
         if (weapon.canAttacksCombined && !weapon.biggerAttackIsReady && ((loopAttack && !previousAttackLoop) || (!loopAttack && previousAttackLoop)))
         {
@@ -202,6 +203,7 @@ public class PlayerCombat : Player, IDamageReceiver
             yield return new WaitForSeconds(swordIcon.FillTime);
             Attack(true);
             swordIcon.gameObject.SetActive(true);
+            Debug.Log("Setting sword icon cooldown");
             swordIcon.SetCooldown();
         }
     }

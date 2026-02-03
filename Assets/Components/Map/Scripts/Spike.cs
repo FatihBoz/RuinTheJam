@@ -8,7 +8,7 @@ public class Spike : MonoBehaviour
     {
         if(collision.TryGetComponent<IDamageReceiver>(out IDamageReceiver damageReceiver))
         {
-            damageReceiver.ReceiveDamage(1);
+            damageReceiver.ReceiveDamage(damage);
             collision.TryGetComponent<Rigidbody2D>(out Rigidbody2D rb);
             {
                 rb.linearVelocityY = 0;

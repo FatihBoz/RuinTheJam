@@ -199,7 +199,6 @@ public class Enemy : MonoBehaviour, IDamageReceiver
     public void ReceiveDamage(float damageAmount)
     {
         health -=damageAmount;
-        print("Enemy health: " + health);
         orgEnemyHeart.SetHealthUI(health, maxHealth);
         if (health <= 0)
         {

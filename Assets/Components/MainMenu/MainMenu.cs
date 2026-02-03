@@ -36,7 +36,7 @@ public class MainMenu : MonoBehaviour
 
     public void OnBuildButtonPressed()
     {
-        bridge.DOLocalMoveY(0, bridgeConstructionTime).OnComplete(() => SceneLoader.Instance.LoadScene("Level1"));
+        bridge.DOLocalMoveY(targetedBridgeHeight, bridgeConstructionTime).OnComplete(() => SceneLoader.Instance.LoadScene("Level1"));
         MakeButtonInactive();
     }
 
